@@ -6,11 +6,64 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXFileReference section */
+		6962F0BA1639314E00758C52 /* lifeWords.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lifeWords.png; sourceTree = "<group>"; };
+		6962F0BC1639314E00758C52 /* container_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container_login.png; sourceTree = "<group>"; };
+		6962F0BD1639314E00758C52 /* container_login.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = container_login.psd; sourceTree = "<group>"; };
+		6962F0BF1639314E00758C52 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		6962F0C01639314E00758C52 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		6962F0C21639314E00758C52 /* container.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = container.png; sourceTree = "<group>"; };
+		6962F0C31639314E00758C52 /* container.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = container.psd; sourceTree = "<group>"; };
+		6962F0C41639314E00758C52 /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
+		6962F0C51639314E00758C52 /* separator.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = separator.psd; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		6962F0B0163930B700758C52 = {
 			isa = PBXGroup;
 			children = (
+				6962F0B91639314E00758C52 /* Graphics */,
 			);
+			sourceTree = "<group>";
+		};
+		6962F0B91639314E00758C52 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				6962F0BA1639314E00758C52 /* lifeWords.png */,
+				6962F0BB1639314E00758C52 /* Login */,
+				6962F0C11639314E00758C52 /* Sign Up */,
+			);
+			path = Graphics;
+			sourceTree = "<group>";
+		};
+		6962F0BB1639314E00758C52 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6962F0BC1639314E00758C52 /* container_login.png */,
+				6962F0BD1639314E00758C52 /* container_login.psd */,
+				6962F0BE1639314E00758C52 /* LoginWallpaper */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		6962F0BE1639314E00758C52 /* LoginWallpaper */ = {
+			isa = PBXGroup;
+			children = (
+				6962F0BF1639314E00758C52 /* 1.jpg */,
+				6962F0C01639314E00758C52 /* 2.jpg */,
+			);
+			path = LoginWallpaper;
+			sourceTree = "<group>";
+		};
+		6962F0C11639314E00758C52 /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+				6962F0C21639314E00758C52 /* container.png */,
+				6962F0C31639314E00758C52 /* container.psd */,
+				6962F0C41639314E00758C52 /* separator.png */,
+				6962F0C51639314E00758C52 /* separator.psd */,
+			);
+			path = "Sign Up";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

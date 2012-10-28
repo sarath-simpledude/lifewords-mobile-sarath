@@ -16,12 +16,15 @@
 		6962F0C31639314E00758C52 /* container.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = container.psd; sourceTree = "<group>"; };
 		6962F0C41639314E00758C52 /* separator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separator.png; sourceTree = "<group>"; };
 		6962F0C51639314E00758C52 /* separator.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = separator.psd; sourceTree = "<group>"; };
+		6962F0C7163D262700758C52 /* UIGlossyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIGlossyButton.h; sourceTree = "<group>"; };
+		6962F0C8163D262700758C52 /* UIGlossyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIGlossyButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		6962F0B0163930B700758C52 = {
 			isa = PBXGroup;
 			children = (
+				6962F0C6163D262700758C52 /* GlossyButton */,
 				6962F0B91639314E00758C52 /* Graphics */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +67,15 @@
 				6962F0C51639314E00758C52 /* separator.psd */,
 			);
 			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		6962F0C6163D262700758C52 /* GlossyButton */ = {
+			isa = PBXGroup;
+			children = (
+				6962F0C7163D262700758C52 /* UIGlossyButton.h */,
+				6962F0C8163D262700758C52 /* UIGlossyButton.m */,
+			);
+			path = GlossyButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

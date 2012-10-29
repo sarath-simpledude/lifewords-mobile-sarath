@@ -18,6 +18,8 @@
 		6962F0C51639314E00758C52 /* separator.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = separator.psd; sourceTree = "<group>"; };
 		6962F0C7163D262700758C52 /* UIGlossyButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIGlossyButton.h; sourceTree = "<group>"; };
 		6962F0C8163D262700758C52 /* UIGlossyButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIGlossyButton.m; sourceTree = "<group>"; };
+		6962F0C9163E7AD500758C52 /* UIView+LayerEffects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+LayerEffects.h"; sourceTree = "<group>"; };
+		6962F0CA163E7AD500758C52 /* UIView+LayerEffects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+LayerEffects.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -72,6 +74,8 @@
 		6962F0C6163D262700758C52 /* GlossyButton */ = {
 			isa = PBXGroup;
 			children = (
+				6962F0C9163E7AD500758C52 /* UIView+LayerEffects.h */,
+				6962F0CA163E7AD500758C52 /* UIView+LayerEffects.m */,
 				6962F0C7163D262700758C52 /* UIGlossyButton.h */,
 				6962F0C8163D262700758C52 /* UIGlossyButton.m */,
 			);

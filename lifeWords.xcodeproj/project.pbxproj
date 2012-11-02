@@ -26,12 +26,15 @@
 		6962F0CF1643C25600758C52 /* UIButton+Curled.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Curled.m"; sourceTree = "<group>"; };
 		6962F0D01643C25600758C52 /* UIImageView+Curled.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Curled.h"; sourceTree = "<group>"; };
 		6962F0D11643C25600758C52 /* UIImageView+Curled.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Curled.m"; sourceTree = "<group>"; };
+		6962F0D31643C2D400758C52 /* JSBadgeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JSBadgeView.h; sourceTree = "<group>"; };
+		6962F0D41643C2D400758C52 /* JSBadgeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JSBadgeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		6962F0B0163930B700758C52 = {
 			isa = PBXGroup;
 			children = (
+				6962F0D21643C2D400758C52 /* JSBadgeView */,
 				6962F0CB1643C25600758C52 /* curledView */,
 				6962F0C6163D262700758C52 /* GlossyButton */,
 				6962F0B91639314E00758C52 /* Graphics */,
@@ -100,6 +103,15 @@
 				6962F0D11643C25600758C52 /* UIImageView+Curled.m */,
 			);
 			path = curledView;
+			sourceTree = "<group>";
+		};
+		6962F0D21643C2D400758C52 /* JSBadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				6962F0D31643C2D400758C52 /* JSBadgeView.h */,
+				6962F0D41643C2D400758C52 /* JSBadgeView.m */,
+			);
+			path = JSBadgeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -110,12 +110,15 @@
 		6962F126164666C500758C52 /* cards@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cards@2x.png"; sourceTree = "<group>"; };
 		6962F127164666C500758C52 /* friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends.png; sourceTree = "<group>"; };
 		6962F128164666C500758C52 /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
+		6962F12A164667B600758C52 /* SPUserResizableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
+		6962F12B164667B600758C52 /* SPUserResizableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		6962F0B0163930B700758C52 = {
 			isa = PBXGroup;
 			children = (
+				6962F129164667B600758C52 /* SPUserResizableView */,
 				6962F0D21643C2D400758C52 /* JSBadgeView */,
 				6962F0CB1643C25600758C52 /* curledView */,
 				6962F0C6163D262700758C52 /* GlossyButton */,
@@ -292,6 +295,16 @@
 				6962F128164666C500758C52 /* friends@2x.png */,
 			);
 			path = "Main View";
+			sourceTree = "<group>";
+		};
+		6962F129164667B600758C52 /* SPUserResizableView */ = {
+			isa = PBXGroup;
+			children = (
+				6962F12A164667B600758C52 /* SPUserResizableView.h */,
+				6962F12B164667B600758C52 /* SPUserResizableView.m */,
+			);
+			name = SPUserResizableView;
+			path = Graphics/SPUserResizableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

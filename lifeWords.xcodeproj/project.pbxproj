@@ -112,6 +112,10 @@
 		6962F128164666C500758C52 /* friends@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friends@2x.png"; sourceTree = "<group>"; };
 		6962F12D164BAF0E00758C52 /* SPUserResizableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPUserResizableView.h; sourceTree = "<group>"; };
 		6962F12E164BAF0E00758C52 /* SPUserResizableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPUserResizableView.m; sourceTree = "<group>"; };
+		6962F130164BAFF900758C52 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
+		6962F131164BAFF900758C52 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		6962F132164BAFF900758C52 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
+		6962F133164BAFF900758C52 /* no_avatar.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = no_avatar.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -129,6 +133,7 @@
 		6962F0B91639314E00758C52 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				6962F12F164BAFF900758C52 /* Extra Stuffs */,
 				6962F124164666C500758C52 /* Main View */,
 				6962F0D5164666B800758C52 /* FilteredThumbnails */,
 				6962F0BA1639314E00758C52 /* lifeWords.png */,
@@ -304,6 +309,17 @@
 				6962F12E164BAF0E00758C52 /* SPUserResizableView.m */,
 			);
 			path = SPUserResizableView;
+			sourceTree = "<group>";
+		};
+		6962F12F164BAFF900758C52 /* Extra Stuffs */ = {
+			isa = PBXGroup;
+			children = (
+				6962F130164BAFF900758C52 /* 37x-Checkmark.png */,
+				6962F131164BAFF900758C52 /* 37x-Checkmark@2x.png */,
+				6962F132164BAFF900758C52 /* line.png */,
+				6962F133164BAFF900758C52 /* no_avatar.jpeg */,
+			);
+			path = "Extra Stuffs";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

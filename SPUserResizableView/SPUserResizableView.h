@@ -2,10 +2,9 @@
 //  SPUserResizableView.h
 //  SPUserResizableView
 //
-//  Created by Sarath Amirtha on 08/11/12.
+//  Created by Sarath Amirtha on 20/11/12.
+//  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
-//  SPUserResizableView is a user-resizable, user-repositionable
-//  UIView subclass.
 
 #import <Foundation/Foundation.h>
 
@@ -21,10 +20,11 @@ typedef struct SPUserResizableViewAnchorPoint {
 
 @interface SPUserResizableView : UIView {
     SPGripViewBorderView *borderView;
-    UIView *contentView;
+    UIView *s;
     CGPoint touchStart;
     CGFloat minWidth;
     CGFloat minHeight;
+    CGFloat maxWidth;
     
     // Used to determine which components of the bounds we'll be modifying, based upon where the user's touch started.
     SPUserResizableViewAnchorPoint anchorPoint;
@@ -32,14 +32,15 @@ typedef struct SPUserResizableViewAnchorPoint {
     id <SPUserResizableViewDelegate> delegate;
 }
 
-@property (nonatomic, assign) id <SPUserResizableViewDelegate> delegate;
+@property (nonatomic, strong) id <SPUserResizableViewDelegate> delegate;
 
 // Will be retained as a subview.
-@property (nonatomic, assign) UIView *contentView;
+@property (nonatomic, strong) UIView *contentView;
 
 // Default is 48.0 for each.
 @property (nonatomic) CGFloat minWidth;
 @property (nonatomic) CGFloat minHeight;
+@property (nonatomic) CGFloat maxWidth;
 
 // Defaults to YES. Disables the user from dragging the view outside the parent view's bounds.
 @property (nonatomic) BOOL preventsPositionOutsideSuperview;

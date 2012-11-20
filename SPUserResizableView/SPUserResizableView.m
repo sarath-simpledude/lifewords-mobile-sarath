@@ -2,10 +2,9 @@
 //  SPUserResizableView.m
 //  SPUserResizableView
 //
-//  Created by Sarath Amirtha on 08/11/12.
+//  Created by Sarath Amirtha on 20/11/12.
+//  Copyright (c) 2012 simpleDudes. All rights reserved.
 //
-//  SPUserResizableView is a user-resizable, user-repositionable
-//  UIView subclass.
 
 #import "SPUserResizableView.h"
 
@@ -19,15 +18,8 @@
 #define kSPUserResizableViewInteractiveBorderSize 10.0
 
 static SPUserResizableViewAnchorPoint SPUserResizableViewNoResizeAnchorPoint = { 0.0, 0.0, 0.0, 0.0 };
-static SPUserResizableViewAnchorPoint SPUserResizableViewUpperLeftAnchorPoint = { 1.0, 1.0, -1.0, 1.0 };
 static SPUserResizableViewAnchorPoint SPUserResizableViewMiddleLeftAnchorPoint = { 1.0, 0.0, 0.0, 1.0 };
-static SPUserResizableViewAnchorPoint SPUserResizableViewLowerLeftAnchorPoint = { 1.0, 0.0, 1.0, 1.0 };
-static SPUserResizableViewAnchorPoint SPUserResizableViewUpperMiddleAnchorPoint = { 0.0, 1.0, -1.0, 0.0 };
-static SPUserResizableViewAnchorPoint SPUserResizableViewUpperRightAnchorPoint = { 0.0, 1.0, -1.0, -1.0 };
 static SPUserResizableViewAnchorPoint SPUserResizableViewMiddleRightAnchorPoint = { 0.0, 0.0, 0.0, -1.0 };
-static SPUserResizableViewAnchorPoint SPUserResizableViewLowerRightAnchorPoint = { 0.0, 0.0, 1.0, -1.0 };
-static SPUserResizableViewAnchorPoint SPUserResizableViewLowerMiddleAnchorPoint = { 0.0, 0.0, 1.0, 0.0 };
-
 @interface SPGripViewBorderView : UIView
 @end
 
@@ -41,14 +33,52 @@ static SPUserResizableViewAnchorPoint SPUserResizableViewLowerMiddleAnchorPoint 
     return self;
 }
 
+- (CGPathRef) newPathForRoundedRect:(CGRect)rect radius:(CGFloat)radius
+{
+	CGMutablePathRef retPath = CGPathCreateMutable();
+    
+	CGRect innerRect = CGRectInset(rect, radius, radius);
+    
+	CGFloat inside_right = innerRect.origin.x + innerRect.size.width;
+	CGFloat outside_right = rect.origin.x + rect.size.width;
+	CGFloat inside_bottom = innerRect.origin.y + innerRect.size.height;
+	CGFloat outside_bottom = rect.origin.y + rect.size.height;
+    
+	CGFloat inside_top = innerRect.origin.y;
+	CGFloat outside_top = rect.origin.y;
+	CGFloat outside_left = rect.origin.x;
+    
+	CGPathMoveToPoint(retPath, NULL, innerRect.origin.x, outside_top);
+    
+	CGPathAddLineToPoint(retPath, NULL, inside_right, outside_top);
+	CGPathAddArcToPoint(retPath, NULL, outside_right, outside_top, outside_right, inside_top, radius);
+	CGPathAddLineToPoint(retPath, NULL, outside_right, inside_bottom);
+	CGPathAddArcToPoint(retPath, NULL,  outside_right, outside_bottom, inside_right, outside_bottom, radius);
+    
+	CGPathAddLineToPoint(retPath, NULL, innerRect.origin.x, outside_bottom);
+	CGPathAddArcToPoint(retPath, NULL,  outside_left, outside_bottom, outside_left, inside_bottom, radius);
+	CGPathAddLineToPoint(retPath, NULL, outside_left, inside_top);
+	CGPathAddArcToPoint(retPath, NULL,  outside_left, outside_top, innerRect.origin.x, outside_top, radius);
+    
+	CGPathCloseSubpath(retPath);
+    
+	return retPath;
+}
+
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSaveGState(context);
     
     // (1) Draw the bounding box.
-    CGContextSetLineWidth(context, 1.0);
-    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
-    CGContextAddRect(context, CGRectInset(self.bounds, kSPUserResizableViewInteractiveBorderSize/2, kSPUserResizableViewInteractiveBorderSize/2));
+    CGContextSetLineWidth(context, 2.0);
+    UIColor * color = [[UIColor alloc]initWithRed: 0.219034 green: 0.598590 blue: 0.815217 alpha: 1 ];
+    CGContextSetStrokeColorWithColor(context, color.CGColor);
+    
+    CGPathRef roundedRectPath = [self newPathForRoundedRect:CGRectInset(self.bounds, kSPUserResizableViewInteractiveBorderSize/2, kSPUserResizableViewInteractiveBorderSize/2) radius:10];
+    
+    CGContextAddPath(context, roundedRectPath);
+    
+    //CGContextAddEllipseInRect(context, CGRectInset(self.bounds, kSPUserResizableViewInteractiveBorderSize/2, kSPUserResizableViewInteractiveBorderSize/2));
     CGContextStrokePath(context);
     
     // (2) Calculate the bounding boxes for each of the anchor points.
@@ -90,7 +120,7 @@ static SPUserResizableViewAnchorPoint SPUserResizableViewLowerMiddleAnchorPoint 
 
 @implementation SPUserResizableView
 
-@synthesize contentView, minWidth, minHeight, preventsPositionOutsideSuperview, delegate;
+@synthesize contentView, minWidth, minHeight, maxWidth,preventsPositionOutsideSuperview, delegate;
 
 - (void)setupDefaultAttributes {
     borderView = [[SPGripViewBorderView alloc] initWithFrame:CGRectInset(self.bounds, kSPUserResizableViewGlobalInset, kSPUserResizableViewGlobalInset)];
@@ -104,6 +134,7 @@ static SPUserResizableViewAnchorPoint SPUserResizableViewLowerMiddleAnchorPoint 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         [self setupDefaultAttributes];
+        self.maxWidth = frame.size.width;
     }
     return self;
 }
@@ -134,8 +165,8 @@ static SPUserResizableViewAnchorPoint SPUserResizableViewLowerMiddleAnchorPoint 
 }
 
 static CGFloat SPDistanceBetweenTwoPoints(CGPoint point1, CGPoint point2) {
-    CGFloat dx = point2.x - point1.x;
     CGFloat dy = point2.y - point1.y;
+    CGFloat dx = point2.x - point1.x;
     return sqrt(dx*dx + dy*dy);
 };
 
@@ -201,10 +232,12 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
 
 - (void)showEditingHandles {
     [borderView setHidden:NO];
+    [borderView setNeedsDisplay];
 }
 
 - (void)hideEditingHandles {
     [borderView setHidden:YES];
+    [borderView setNeedsDisplay];
 }
 
 - (void)resizeUsingTouchLocation:(CGPoint)touchPoint {
@@ -242,6 +275,14 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
         newWidth = self.frame.size.width;
         newX = self.frame.origin.x;
     }
+    
+    
+    if (newWidth > self.maxWidth) {
+        
+        newWidth = self.frame.size.width;
+        newX = self.frame.origin.x;
+    }
+    
     if (newHeight < self.minHeight) {
         newHeight = self.frame.size.height;
         newY = self.frame.origin.y;
@@ -274,6 +315,7 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
 }
 
 - (void)translateUsingTouchLocation:(CGPoint)touchPoint {
+    [borderView setNeedsDisplay];
     CGPoint newCenter = CGPointMake(self.center.x + touchPoint.x - touchStart.x, self.center.y);
     if (self.preventsPositionOutsideSuperview) {
         // Ensure the translation won't cause the view to move offscreen.
@@ -298,8 +340,6 @@ typedef struct CGPointSPUserResizableViewAnchorPointPair {
 
 - (void)dealloc {
     [contentView removeFromSuperview];
-    [borderView release];
-    [super dealloc];
 }
 
 @end
